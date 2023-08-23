@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="author" content="Isaac J. Wallace">
+        <meta name="description" content="WallBin is a pastebin-like website where you can store your code and send a link to other developers for use!">
+        <meta name="keywords" content="PasteBin, HasteBin, WasteBin, CodeBin, Code Sharing, Code Storing">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+        <title>WALLBIN</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/stackoverflow-dark.min.css" integrity="sha512-Xn1b0y/BrCD7usnEh6r9CcKxHXFVleVUjGDnfc95zDDwFUwtOz3lJC/XtJcuLRNyrMQJEEToFfwjC9Ue/aWY/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script>hljs.highlightAll();</script>
+
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <%- include("_buttons.ejs", { id: locals.id }) %>
+        <div class="container">
+            <div class="line-numbers">
+                <% for(let i = 1; i <= code.split('\n').length; i++) { %>
+                    <div><%= i %></div>
+                <% } %>
+            </div>
+
+            <pre><code id="code-display" class="<%= locals.language ? `language-${locals.language}` : ""%>"><%= code %></code></pre>
+        </div>
+    </body>
+</html>
